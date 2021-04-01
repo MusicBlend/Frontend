@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './CSS/NavMenu.css';
 
 export class NavMenu extends Component {
@@ -23,8 +23,7 @@ export class NavMenu extends Component {
 
   render () {
     return (
-      <header>
-        <Router>
+        <header>
             <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
             <Container>
                 <NavbarBrand tag={Link} to="/">MusicBlend</NavbarBrand>
@@ -32,17 +31,19 @@ export class NavMenu extends Component {
                 <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
                 <ul className="navbar-nav flex-grow">
                     <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                        <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/spotifylogin">Login</NavLink>
+                        <NavLink tag={Link} className="text-dark" to="/spotifylogin">Login</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={Link} className="text-dark" to="/chat">Chat</NavLink>
                     </NavItem>
                 </ul>
                 </Collapse>
             </Container>
-            </Navbar>
-        </Router>
-      </header>
+            </Navbar>  
+        </header>
     );
   }
 }
