@@ -3,17 +3,19 @@ import { Layout } from './Layout/Layout';
 import {SpotifyLogin} from "./Login/SpotifyLogin";
 import {SpotifyResponse} from "./Login/SpotifyResponse";
 import {Home} from "./Home/Home";
+import Chat from "./Chat/Chat";
 
 
 function App() {
   return (
-    <Layout>
-      <Router>
+    <Router>  
+      <Layout>    
+          <Route path='/spotifylogin' component={SpotifyLogin} />
+          <Route path='/callback' component={SpotifyResponse} />
+          <Route path='/chat' component={Chat} />
           <Route exact path='/' component={Home} />
-          <Route exact path='/spotifylogin' component={SpotifyLogin} />
-          <Route exact path='/callback' component={SpotifyResponse} />
-      </Router>    
-    </Layout>
+        </Layout>
+    </Router>       
   );
 }
 
