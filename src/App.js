@@ -4,6 +4,7 @@ import {SpotifyLogin} from "./Login/SpotifyLogin";
 import {SpotifyResponse} from "./Login/SpotifyResponse";
 import {Home} from "./Home/Home";
 import Chat from "./Chat/Chat";
+import Communities from "./Communities/Communities";
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <Router>  
       <Layout>    
           <Route path='/spotifylogin' component={SpotifyLogin} />
+          <Route path='/communities' component={Communities} />
           <Route path='/callback' component={SpotifyResponse} />
           <Route path='/chat' component={Chat} />
           <Route exact path='/' component={Home} />
