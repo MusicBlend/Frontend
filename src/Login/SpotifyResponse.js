@@ -27,8 +27,6 @@ export class SpotifyResponse extends Component {
 
         return (
             <div>
-                <h2>{response.displayName}</h2>
-                <h2>{response.href}</h2>
                 <h2>{response.id}</h2>
             </div>
         );
