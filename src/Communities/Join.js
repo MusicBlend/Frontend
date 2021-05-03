@@ -8,7 +8,7 @@ const Join = (props) => {
         const isCodeProvided = communityCode && communityCode !== "";
 
         if(isCodeProvided){
-            props.getUsername()
+            props.joinCommunity(communityCode)
         }else{
             alert('Please insert a community code');
         }

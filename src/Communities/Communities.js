@@ -7,11 +7,12 @@ import  store  from "../app/store.js";
 
 import Join from './Join';
 import Create from './Create';
+import Show from './Show';
 
 export function Communities() {
     const [accessToken, getAccessToken] = useState();
-    const [userId, getUserId] = useState('');
     const [name, getName] = useState('');
+    const [userId, getUserId] = useState('');
     const [ chat, setChat ] = useState([]);
     const [ connection, setConnection ] = useState(null);
 
@@ -21,6 +22,7 @@ export function Communities() {
 
     const dispatch = useDispatch()
     const db = store.getState();
+
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
         const code = queryParams.get("code");
@@ -35,7 +37,7 @@ export function Communities() {
                 dispatch(
                     setId(resp)
                 )
-                getUserId(resp)
+                getUserId(resp);
             });
 
             fetch("https://localhost:5002/SpotifyAuthentication/name/" + res)
@@ -46,9 +48,7 @@ export function Communities() {
                 )
                 getName(resp)
             });
-        });
-
-        
+        }); 
     },)
     
     useEffect(() => {
@@ -58,7 +58,7 @@ export function Communities() {
             .build();
 
         setConnection(newConnection);
-    }, []);
+    },[]);
 
     useEffect(() => {
         if (connection) {
@@ -79,11 +79,10 @@ export function Communities() {
 
     
 
-    async function createRoom(communityName){
-        
+    async function createCommunity(communityName){
         if (connection.connectionStarted) {
             try {
-                await connection.send('CreateCommunity', communityName, `${db.id}`, `${db.username}`);
+                await connection.send('CreateCommunity', communityName, `${db.id}`);
             }
             catch(e) {
                 console.log(e);
@@ -94,22 +93,31 @@ export function Communities() {
         }
     }
 
-    async function getUsername(){
-        const response = await fetch("https://localhost:5002/SpotifyAuthentication/name/" + accessToken);
-        const data = await response.json();
-        getName(data);
+    async function joinCommunity(communityCode){
+        if (connection.connectionStarted) {
+            try {
+                await connection.send('JoinCommunity', `${db.id}`, communityCode);
+            }
+            catch(e) {
+                console.log(e);
+            }
+        }
+        else {
+            alert('No connection to server yet.');
+        }
     }
 
     return(
         <center>
             <div>             
-                <Join getUsername={getUsername}/>
+                <Join joinCommunity={joinCommunity}/>
                 <br/>
-                <Create createRoom={createRoom}/>
-                <hr/> 
+                <Create createCommunity={createCommunity}/>
+                <hr/>  
                 <p>
-                    <h2>{userId}</h2>
-                    <h2>{name}</h2>
+                    <Show />
+                    {/* <h2>{db.id}</h2>
+                    <h2>{db.username}</h2> */}
                 </p> 
             </div>
         </center>    

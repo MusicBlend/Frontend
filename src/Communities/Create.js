@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Join = (props) => {
+const Create = (props) => {
     const [communityName, setcommunityName] = useState('');
 
     const onSubmit = (e) =>{
@@ -9,7 +9,7 @@ const Join = (props) => {
         const isCodeProvided = communityName && communityName !== "";
 
         if(isCodeProvided){
-            props.createRoom(communityName);
+            props.createCommunity(communityName);
         }else{
             alert('Please insert a community name');
         }
@@ -33,4 +33,4 @@ const Join = (props) => {
     )
 };
 
-export default Join;
+export default Create;
