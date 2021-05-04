@@ -3,10 +3,7 @@ import React, { useEffect, useState } from 'react';
 import  store  from "../app/store.js";
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
-    useParams
   } from "react-router-dom";
 
 const Show = (props) => {

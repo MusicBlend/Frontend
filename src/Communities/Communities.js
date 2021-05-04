@@ -10,9 +10,7 @@ import Create from './Create';
 import Show from './Show';
 
 export function Communities() {
-    const [accessToken, getAccessToken] = useState();
-    const [name, getName] = useState('');
-    const [userId, getUserId] = useState('');
+
     const [ chat, setChat ] = useState([]);
     const [ connection, setConnection ] = useState(null);
 
@@ -29,7 +27,7 @@ export function Communities() {
         fetch("https://localhost:5002/SpotifyAuthentication/" + code)
         .then(results => results.json())
         .then(res => {
-            getAccessToken(res)
+            
 
             fetch("https://localhost:5002/SpotifyAuthentication/id/" + res)
             .then(response => response.json())
@@ -37,7 +35,7 @@ export function Communities() {
                 dispatch(
                     setId(resp)
                 )
-                getUserId(resp);
+                
             });
 
             fetch("https://localhost:5002/SpotifyAuthentication/name/" + res)
@@ -46,7 +44,7 @@ export function Communities() {
                 dispatch(
                     setUsername(resp)
                 )
-                getName(resp)
+                
             });
         }); 
     },)
