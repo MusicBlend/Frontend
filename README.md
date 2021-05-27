@@ -1,3 +1,4 @@
+# MusicBlend Fontend
 This repository contains the frontend for the musicblend project. The frontend is made with react and contains several components: General Chat, Community Chats and the spotify Authentication. To use this frontend The Chatservice and SpotifyAuth repositories are needed
 
 ## Available Scripts
