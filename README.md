@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# MusicBlend Fontend
+This repository contains the frontend for the musicblend project. The frontend is made with react and contains several components: General Chat, Community Chats and the spotify Authentication. To use this frontend The Chatservice and SpotifyAuth repositories are needed
 
 ## Available Scripts
 
