@@ -13,6 +13,7 @@ export function Communities() {
 
     const [ chat, setChat ] = useState([]);
     const [ connection, setConnection ] = useState(null);
+    const [ id, ID ] = useState();
 
 
     const latestChat = useRef(null);
@@ -28,10 +29,10 @@ export function Communities() {
         .then(results => results.json())
         .then(res => {
             
-
             fetch("https://localhost:5002/SpotifyAuthentication/id/" + res)
             .then(response => response.json())
             .then(resp => {
+                ID(resp)
                 dispatch(
                     setId(resp)
                 )
@@ -114,8 +115,6 @@ export function Communities() {
                 <hr/>  
                 <p>
                     <Show />
-                    {/* <h2>{db.id}</h2>
-                    <h2>{db.username}</h2> */}
                 </p> 
             </div>
         </center>    
